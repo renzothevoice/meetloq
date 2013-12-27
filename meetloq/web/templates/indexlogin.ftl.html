@@ -1,0 +1,50 @@
+<div class="littlecontainer">
+                <h2>Login:</h2>
+                <form class="login" action="login" method="post">
+                    <table><tr><td><label>Username:</label></td>
+                    <td><input type="text" name="username" class="inputtext"/></td></tr>
+                        <tr><td><label>Password:</label></td>
+                    <td><input type="password" name="password" class="inputtext"/></td></tr>
+                        <tr><td></td><td><input type="submit" value="Login" class="button"/></td></tr>
+                    <tr><td></td><td><a href="#"><input type="button" value="Recupera Password" class="buttonorange"/></a></td></tr>
+                    </table>
+                </form>
+                <div class="error">${errorlogin}</div>
+            </div>
+            <div class="mediumcontainer">
+            <form action="executereg" method="post">
+                <h2>Registrati come Organizzatore dal form qui sotto:</h2>
+                <table>
+                    <tr>
+                        <td>Nome:</td>
+                        <td><input class="inputtext" value="${nome}" type="text" name="nome"/></td>
+                        <td>Cognome:</td>
+                        <td><input class="inputtext" value="${cognome}" type="text" name="cognome"/></td>
+                        <td>Data di Nascita:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG" value="${bday}" type="text" name="bday"/></td>
+                    </tr>
+                     <tr>
+                        <td>Username:</td>
+                        <td><input class="inputtext" value="${user}" type="text" name="user"/></td>
+                        <td>Password:</td>
+                        <td><input class="inputtext" value="${pass}" type="password" name="pass"/></td>
+                        <td>Conf. Pass.:</td>
+                        <td><input class="inputtext" type="password" name="confpass"/></td>
+                     </tr>
+                     <tr>
+                        <td>E-mail:</td>
+                        <td><input class="inputtext" value="${email}" type="text" name="email"/></td>
+                        <td>Azienda:</td>
+                        <td><input class="inputtext" value="${azienda}" type="text" name="azienda"/></td>
+                        <td>Ruolo nell'azienda:</td>
+                        <td><input class="inputtext" value="${ruolo}" type="text" name="ruolo"/></td>
+                     </tr>
+                     <tr>
+                            <td></td><td><input type="submit" value="Registrati" class="button"/></td>
+                     </tr>
+                </table>
+                <div class="error">${errorreg}</div>
+            </form>
+            
+            
+            </div>

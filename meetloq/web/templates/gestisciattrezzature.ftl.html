@@ -1,0 +1,30 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        <div class="error">${message}</div>
+        <div class="littlecontainergest">
+                <h2>Elenco Attrezzature:</h2>
+                <table>
+                    <tr><td class="bold">DESCRIZIONE</td></tr>
+                    <#list attrezzatura as item>
+                        <tr>
+                            <td>${item.getNome_attrezzatura()}</td>
+                        </tr>
+                    </#list>
+                </table>
+        </div>
+            <div class="opzionicontainer">
+                <form action="ex_gestisciattrezzature" method="post">
+                <h2>Aggiungi attrezzatura:</h2>
+                <table>
+                    <tr><td class="bold">NOME ATTREZZATURA</td><td class="bold"><input class="inputtext" name="descrizione" type="text"></td>
+                    <td><input type="submit" value="Aggiungi" class="button"></td></tr>
+                </table>
+                </form>
+            </div>
+        
+        
+        
+       <#include "footer.ftl.html">

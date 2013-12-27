@@ -1,0 +1,45 @@
+<#include "header.ftl.html">
+<div class="error">${message}</div>
+ <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            
+            
+            <form action="ex_votazione" method="post">
+                <a href="add_luogo" ><input type="button" style="width:22%; margin-left:6px;" class="buttonorange" value="Aggiungi Luogo"/></a>
+                    <div class="mediumcontainerreg">
+                    <h2>Luoghi:</h2>
+                    
+                         <table class="eventtable">
+                             
+                <tr>
+                    <td class="bold">Nome Luogo</td><td class="bold">Indirizzo:</td><td class="bold">Tipo Luogo</td><td class="bold">Posti</td><td class="bold">Attrezzatura:</td><td></td>
+                </tr>
+                
+                <#list luoghi as item>
+                
+                    <tr>
+                        <td>${item.getNome_luogo()!"Non ci sono Eventi"}</td><td>${item.getIndirizzo()}</td><td>${item.getTipo_luogo()}</td><td>${item.getPosti()}</td>
+                        <td style="width:18%;">
+                            <ul style="text-align:left;">
+                        <#list item.getAttrezzature() as att>
+                        <li>${att.getNome_attrezzatura()}</li>
+                        </#list>
+                        </ul>
+                        </td>
+                        <td style="width:25%;"><a href="mod_luogo?idluogo=${item.getIdluogo()}"><img src="templates/img/edit.png" title="modifica" alt="modifica"/></a><a href="delete_luogo?id=${item.getIdluogo()}"><img src="templates/img/delete.png" title="cancella" alt="cancella"/></a></td>
+                    </tr>
+                </#list>
+                
+                
+            </table>
+                    
+                    </div>
+                
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

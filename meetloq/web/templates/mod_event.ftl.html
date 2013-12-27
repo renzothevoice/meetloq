@@ -1,0 +1,48 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <div class="mediumcontainerreg">
+                <h2>Crea il tuo evento compilando il form: </h2>
+                <div style=" width:40%;padding: 10px;">
+                     <form enctype="multipart/form-data" method="post" action="upload_mod?id=${idevento}" > 
+                                <input  type="file" name="file"/>
+                                <input style="width: 30%" type="submit" class="button" value="Salva Modifica"/>
+                     </form>
+                </div>
+                <form action="ex_mod_event?id=${idevento}" method="post">
+                <table>
+                    <tr>
+                        <td>Titolo:</td>
+                        <td><input class="inputtext" value="${titolo}" type="text" name="titolo"/></td>
+                        <td>Descrizione:</td>
+                        <td><input class="inputtext" value="${descrizione}" type="text" name="descrizione"/></td>
+                        <td>Data inizio voto:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG" value="${datainiziovoto}" type="text" name="datainiziovoto"/></td>
+                    </tr>
+                     <tr>
+                        <td>Data fine voto:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG" value="${datafinevoto}" type="text" name="datafinevoto"/></td>
+                        <td>Pubblico:</td>
+                        <td>
+                            <select class="inputtext" name="pubblico">
+                                <option value="true" >Si</option>
+                                <option value="false">No</option>
+                            </select>
+                        </td>
+                        <td><input type="submit" class="button" value="Modifica"/></td>
+                     </tr>
+                     
+                </table>
+                </form>
+                <div class="error">${success}</div>
+                <div class="error">${upload}</div>
+            </div>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

@@ -1,0 +1,40 @@
+<#include "header.ftl.html">
+        <div id="firstblock"><img src="templates/img/welcome.png" alt="welcome image" style="width:90%; margin-left:5%;"></img><p class="psecondblockwelcome">CREA, ORGANIZZA E CONDIVIDI I TUOI EVENTI!</p></div>
+        <div id="thirdblock">
+            <div class="error">${message}</div>
+            <form action="ex_votazione" method="post">
+                <#list opzioni as item>
+                    <div class="mediumcontainerreg">
+                    <h2>Opzione: </h2>
+                    
+                        <input type="hidden" value="${item.getIdopzione()}" name="idopzione">
+                        <table>
+                            <tr>
+                                <td class="bold">DATA E ORA INIZIO</td>
+                                <td class="bold">DATA E ORA FINE</td>
+                                <td class="bold">LUOGO</td>
+                                <td class="bold">CHECK</td>
+                            </tr>
+                            <tr>
+                                <td>${item.getDatainizio()}</td>
+                                <td>${item.getDatafine()}</td>
+                                <td>${item.getLuogoevento().getIndirizzo()} - ${item.getLuogoevento().getNome_luogo()}</td>
+                                <td><input type="checkbox" value="${item.getIdopzione()}" name="checkbox${item_index}"></td>
+                           
+                            </tr>
+                             <tr>
+                               
+                        </table>
+                    
+                    </div>
+                </#list>
+                <input type="hidden" name="size" value="${opzioni?size}"/>
+                <input type="hidden" name="idinvitato" value="${idinvitato}"/>
+                <input type="hidden" name="idevento" value="${idevento}"/>
+                 <input style="width:15%; margin-top:12px;" class="button" type="submit" value="Effettua voto"/>
+                </form>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

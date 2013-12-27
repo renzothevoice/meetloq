@@ -1,0 +1,30 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <a href="create_event"><input class="loginleft buttonorange buttoncreate" type="button" value="CREA EVENTO"/></a>
+            <div class="mediumcontainerreg">
+                <h2>I tuoi ultimi eventi: </h2>
+                <table class="eventtable">
+                <tr>
+                    <td class="bold">Titolo evento:</td><td class="bold">Descrizione evento:</td><td class="bold">Inizio voto:</td><td class="bold">Fine voto:</td><td class="bold">Pubblico:</td><td class="bold" style="width:25%;">Operazioni</td>
+                </tr>
+                
+                <#list eventi as item>
+                
+                    <tr>
+                        <td>${item.getTitolo()!"Non ci sono Eventi"}</td><td>${item.getDescrizione()}</td><td>${item.getIniziovoto()}</td><td>${item.getFinevoto()}</td><td><#if (item.isPubblico()==true)>si<#else>no</#if></td><td><a href="view_event?idevento=${item.getIdevento()}"><img src="templates/img/subscrive.png" title="visualizza" alt="info"/><a href="mod_event?idevento=${item.getIdevento()}"><img src="templates/img/edit.png" title="modifica" alt="modifica"/></a><a href="add_invitato?id=${item.getIdevento()}"><img src="templates/img/addinvitato.png" title="aggiungi invitato" alt="modifica"/></a><a href="delete_event?id=${item.getIdevento()}"><img src="templates/img/delete.png" title="cancella" alt="cancella"/></a></td>
+                    </tr>
+                </#list>
+                
+                
+            </table>
+            </div>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

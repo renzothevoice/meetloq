@@ -1,0 +1,32 @@
+<#include "header.ftl.html">
+        
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <div class="mediumcontainerreg">
+                <form action="invitati_event" method="post">
+                <h2>Gestione Utenti: </h2>
+                <table>
+                    <tr>
+                        <td class="bold">NOME</td> <td class="bold">COGNOME</td> <td class="bold">USERNAME</td> <td class="bold">E-MAIL</td> <td class="bold">Tipo Utente</td> <td class="bold">OPZIONI</td>
+                    </tr>
+                    <#list utenti as item>
+                        <tr>
+                            <td>${item.getNome()}</td> <td>${item.getCognome()}</td> <td>${item.getUsername()}</td> <td>${item.getEmail()}</td> <td>  <#if (item.getIdtipo_utente()==1)> Admin <#else> Organizzatore </#if> </td> 
+                            <td style="width:35%;"><a href="mod_utente?id=${item.getIdutente()}"><img src="templates/img/addinvitato.png" title="Cambia tipo utente" alt="modifica"/></a><a href="delete_utente?id=${item.getIdutente()}"><img src="templates/img/delete.png" title="Rimuovi utente" alt="cancella"/></a></td>
+                        </tr>
+                    </#list>
+                    <tr>
+                    <input type="hidden" name="sizelista" value="${invitati?size}">
+                        
+                    </tr>
+                </table>
+            </div>
+                <div class="error">${errorevent}</div>
+            </form>
+                
+            </div>
+        
+       <#include "footer.ftl.html">

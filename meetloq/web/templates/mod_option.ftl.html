@@ -1,0 +1,38 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <div class="mediumcontainerreg">
+                <form name="reg" action="ex_mod_option?idevento=${idevento}" method="post">
+                <table>
+                    <h2>Modifica l'opzione: </h2>
+                    <tr>
+                        <td>Data inizio evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="${datainizioevento}" type="text" name="datainizioevento"/></td>
+                        <td>Data fine evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH:MM" value="${datafineevento}" type="text" name="datafineevento"/></td>
+                        <td>Luogo:</td>
+                        <td>
+                            <select class="inputtext" name="luogo">
+                                <#list luoghi as item>
+                                    <option value="${item.getIdluogo()}">${item.getNome_luogo()}</option>
+                                </#list>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                    <input type="hidden" value="${idopzione}" name="idopzione">
+                        <td><input type="submit" class="button" value="Modifica"</td>
+                    </tr>
+                </table>
+                </form>
+                <div class="error">${errorop}</div>
+            </div>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

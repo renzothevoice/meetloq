@@ -1,0 +1,36 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <input class="loginleft buttonorange buttoncreate" type="submit" value="CREA EVENTO"/>
+            <div class="mediumcontainerreg">
+                <h2>Aggiungi invitati ad Evento: </h2>
+                <form action="mod_invitati_event?" method="post">
+                <table>
+                    
+                    <tr>
+                        <td class="bold">NOME</td><td class="bold">COGNOME</td><td class="bold">E-MAIL</td><td class="bold" value="1">SELEZIONA INVITATO</td>
+                    </tr>
+                    <#list invitati as item>
+                        <tr>
+                            <td>${item.getNome()}</td><td>${item.getCognome()}</td><td>${item.getEmail()}</td><td><input type="checkbox" name="checkbox${item_index}" value="1"  <#if (item.isIsinvitatoallevento()==true)>checked<#else>""</#if>> <input type="hidden" name="idinvitato${item_index}" value="${item.getIdinvitato()}"/></td>
+                        </tr>
+                    </#list>
+                    <tr>
+                    <input type="hidden" name="sizelista" value="${invitati?size}"/>
+                    <input type="hidden" name="idevento" value="${idevento}"/>
+                        <td><input type="submit" value="Invita" class="button"/></td>
+                    </tr>
+                </table>
+            </div>
+                <div class="error">${errorevent}</div>
+            </form>
+            </div>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

@@ -1,0 +1,45 @@
+<#include "header.ftl.html">
+        <div id="firstblock"><img src="templates/img/welcome.png" alt="welcome image" style="width:90%; margin-left:5%;"/><p class="psecondblockwelcome">CREA, ORGANIZZA E CONDIVIDI I TUOI EVENTI!</p></div>
+        <div id="secondblock">
+            
+        
+  <#include "slider.ftl.html">
+            
+        </div>
+        <div id="thirdblock">
+            <div class="mediumcontainerreg">
+                <h2>Dettaglio Evento: </h2>
+                <table>
+                    <tr><td class="bold">TITOLO</td><td class="bold">DESCRIZIONE</td><td class="bold">INIZIO VOTO</td><td class="bold">FINE VOTO</td><td class="bold">EVENTO DEFINITO</td><td class="bold">ALLEGATO</td></tr>
+                    <tr>
+                        <td>${titolo}</td><td>${descrizione}</td><td>${iniziovoto}</td><td>${finevoto}</td><td><#if (eventodefinito)>si <#else> no </#if></td><td><#if (nomeallegato?size>0)><a href="${linkallegato}">Scarica</a><#else></#if></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="littlecontainergest">
+                <h2>Invitati all'evento:</h2>
+                <table>
+                    <tr><td class="bold">E-MAIL</td><td class="bold">NOME</td><td class="bold">COGNOME</td></tr>
+                    <#list invitatievento as item>
+                        <tr>
+                            <td>${item.getEmail()}</td><td>${item.getNome()}</td><td>${item.getCognome()}</td>
+                        </tr>
+                    </#list>
+                </table>
+        </div>
+            <div class="opzionicontainer">
+                <h2>Elenco opzioni:</h2>
+                <table>
+                    <tr><td class="bold">DATA INIZIO</td><td class="bold">DATA FINE</td><td class="bold">LUOGO</td><td class="bold">CONTATORE</td><td class="bold">DISPONIBILE</td></tr>
+                     <#list opzionievento as item>
+                        <tr>
+                            <td>${item.getDatainizio()}</td><td>${item.getDatafine()}</td><td>${item.getLuogoevento().getNome_luogo()} - ${item.getLuogoevento().getIndirizzo()}</td><td>${item.getContatore()}</td><td><#if (item.isDisponibile()==true)>si<#else>no</#if></td>
+                        </tr>
+                    </#list>
+                </table>
+            </div>
+        
+        
+        
+       <#include "footer.ftl.html">

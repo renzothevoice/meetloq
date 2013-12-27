@@ -1,0 +1,16 @@
+        <div id="login">
+            <div class="loginleft">
+                Ciao ${username}, e benvenuto su MeetLoq!
+            </div>
+            <div class="loginleft">
+                <form action="logout" method="post">
+                    <input type="submit" class="buttonorange" value="Logout"/>
+                </form>
+            </div>
+            <#if (tipo=="1")>
+            <#include "menuadmin.ftl.html">
+            <#elseif (tipo=="2")>
+            <#include "menuorg.ftl.html">
+            </#if>
+            
+        </div>

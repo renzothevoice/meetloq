@@ -1,0 +1,22 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <div class="mediumcontainerreg" style="padding:20px;">
+                ${messaggio}
+                Il link per il voto &egrave;:<br><br>
+                <!--${link}-->
+                <ul style="font-size:16px;">
+                <#list inviti as item>                   
+                <li> ${item}   </li>               
+                    </#list>
+                    </ul>
+            </div>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

@@ -1,0 +1,162 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <div class="mediumcontainerreg">
+                <h2>Crea il tuo evento compilando il form: </h2>
+                <div style=" width:40%;padding: 10px;">
+                     <form enctype="multipart/form-data" method="post" action="upload"> 
+                                <input  type="file" name="file"/>
+                                <input style="width: 30%" type="submit" class="button" value="Upload"/>
+                     </form>
+                </div>
+                <form name="reg" action="ex_create_event" method="post">
+                <table>
+                    <tr>
+                        <td>Titolo:</td>
+                        <td><input class="inputtext" value="" type="text" name="titolo"/></td>
+                        <td>Descrizione:</td>
+                        <td><input class="inputtext" value="" type="text" name="descrizione"/></td>
+                        <td>Data inizio voto:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG" value="" type="text" name="datainiziovoto"/></td>
+                    </tr>
+                     <tr>
+                        <td>Data fine voto:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG" value="${user}" type="text" name="datafinevoto"/></td>
+                        <td>Pubblico:</td>
+                        <td>
+                            <select class="inputtext" name="pubblico">
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
+                            </select>
+                        </td>
+                     </tr>
+                     
+                </table>
+                <div class="error">${errorcreate}</div>
+                <div class="error">${errorop5}</div>
+                <div class="error">${upload}</div>
+            </div>
+            <div class="mediumcontainerreg">
+                <h2>Seleziona opzioni 1 per l'evento (obbligatoria): </h2>
+                <table>
+                    <tr>
+                        <td>Data inizio evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datainizioevento1"/></td>
+                        <td>Data fine evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH:MM" value="" type="text" name="datafineevento1"/></td>
+                    </tr>
+                    <tr>
+                        <td>Luogo:</td>
+                        <td>
+                            <select class="inputtext" name="luogo1">
+                                <#list luoghi as item>
+                                <option value="${item.getIdluogo()}">${item.getNome_luogo()} | Attrezzature:<#list item.getAttrezzature() as item> ${item.getNome_attrezzatura()} - </#list> | Posti: ${item.getPosti() }</option>
+                                </#list>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div class="error">${errorop1}</div>
+            </div>
+            <div class="mediumcontainerreg">
+                <h2>Seleziona opzioni 2 per l'evento: </h2>
+                <table>
+                    <tr>
+                        <td>Data inizio evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datainizioevento2"/></td>
+                        <td>Data fine evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datafineevento2"/></td>
+                    </tr>
+                    <tr>
+                        <td>Luogo:</td>
+                        <td>
+                            <select class="inputtext" name="luogo2">
+                                <#list luoghi as item>
+                                <option value="${item.getIdluogo()}">${item.getNome_luogo()} | Attrezzature:<#list item.getAttrezzature() as item> ${item.getNome_attrezzatura()} - </#list> | Posti: ${item.getPosti() }</option>
+                                </#list>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div class="error">${errorop2}</div>
+            </div>
+            <div class="mediumcontainerreg">
+                <h2>Seleziona opzioni 3 per l'evento: </h2>
+                <table>
+                    <tr>
+                        <td>Data inizio evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datainizioevento3"/></td>
+                        <td>Data fine evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datafineevento3"/></td>
+                    </tr>
+                    <tr>
+                        <td>Luogo:</td>
+                        <td>
+                            <select class="inputtext" name="luogo3">
+                                <#list luoghi as item>
+                                <option value="${item.getIdluogo()}">${item.getNome_luogo()} | Attrezzature:<#list item.getAttrezzature() as item> ${item.getNome_attrezzatura()} - </#list> | Posti: ${item.getPosti() }</option>
+                                </#list>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div class="error">${errorop3}</div>
+            </div>
+            <div class="mediumcontainerreg">
+                <h2>Seleziona opzioni 4 per l'evento: </h2>
+                <table>
+                    <tr>
+                        <td>Data inizio evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datainizioevento4"/></td>
+                        <td>Data fine evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datafineevento4"/></td>
+                    </tr>
+                    <tr>
+                        <td>Luogo:</td>
+                        <td>
+                            <select class="inputtext" name="luogo4">
+                                <#list luoghi as item>
+                                <option value="${item.getIdluogo()}">${item.getNome_luogo()} | Attrezzature:<#list item.getAttrezzature() as item> ${item.getNome_attrezzatura()} - </#list> | Posti: ${item.getPosti() }</option>
+                                </#list>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div class="error">${errorop4}</div>
+            </div>
+            <div class="mediumcontainerreg">
+                <h2>Seleziona opzioni 5 per l'evento: </h2>
+                <table>
+                    <tr>
+                        <td>Data inizio evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datainizioevento5"/></td>
+                        <td>Data fine evento:</td>
+                        <td><input class="inputtext" placeHolder="AAAA/MM/GG - HH-MM" value="" type="text" name="datafineevento5"/></td>
+                    </tr>
+                    <tr>
+                        <td>Luogo:</td>
+                        <td>
+                            <select class="inputtext" name="luogo5">
+                                <#list luoghi as item>
+                                <option value="${item.getIdluogo()}">${item.getNome_luogo()} | Attrezzature:<#list item.getAttrezzature() as item> ${item.getNome_attrezzatura()} - </#list> | Posti: ${item.getPosti() }</option>
+                                </#list>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="ex_create_event"><input type="submit" value="Crea Evento" class="button"/></a></td>
+                    </tr>
+                </table>
+               
+            </div>
+            </form>
+                
+            </div>
+        
+        
+        
+       <#include "footer.ftl.html">

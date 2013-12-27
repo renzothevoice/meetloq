@@ -1,0 +1,34 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        
+        <div id="thirdblock">
+            <div class="mediumcontainerreg">
+                <form action="invitati_event" method="post">
+                <table>
+                    <h2>Aggiungi i tuoi invitati: </h2>
+                    <tr>
+                        <td class="bold">NOME</td><td class="bold">COGNOME</td><td class="bold">E-MAIL</td><td class="bold" value="1">SELEZIONA INVITATO</td>
+                    </tr>
+                    <#list invitati as item>
+                        <tr>
+                            <td>${item.getNome()}</td><td>${item.getCognome()}</td><td>${item.getEmail()}</td><td><input type="checkbox" name="checkbox${item_index}" value="1"><input type="hidden" name="idinvitato${item_index}" value="${item.getIdinvitato()}"></td>
+                        </tr>
+                    </#list>
+                    <tr>
+                    <input type="hidden" name="sizelista" value="${invitati?size}">
+                        <td><input type="submit" value="Invita" class="button"></td>
+                    </tr>
+                </table>
+            </div>
+                <div class="error">${errorevent}</div>
+            </form>
+                
+            </div>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

@@ -1,0 +1,38 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+        <#if (confirm?size>0)>
+        <#include "confirm.ftl.html">
+        </#if>
+        <div class="error">${messaggiovoto}</div>
+        <div id="firstblock"><img src="templates/img/welcome.png" alt="welcome image" style="width:90%; margin-left:5%;"/><p class="psecondblockwelcome">CREA, ORGANIZZA E CONDIVIDI I TUOI EVENTI!</p></div>
+        <div id="secondblock">
+            
+        
+  <#include "slider.ftl.html">
+            
+        </div>
+        <div id="thirdblock">
+            <#if (login==0)>
+            <#include "indexlogin.ftl.html">
+            </#if>
+            <div class="mediumcontainerreg">
+                <h2>Ultimi eventi pubblici postati:</h2>
+                <table class="eventtable">
+                <tr>
+                    <td>Nome evento:</td><td>Data e ora:</td><td>Organizzatore:</td><td style="width:12%;">Vedi Evento</td>
+                </tr>
+                <#list eventipubblici as item>
+                    <tr>
+                        <td>${item.getDescrizione()}</td><td>${item.getIniziovoto()}</td><td>${item.getFinevoto()}</td><td style="width:12%;"><a href="view_event_pub?id=${item.getIdevento()}"><img title="elimina" src="templates/img/subscrive.png" alt="info"/></a></td>
+                    </tr>
+                </#list>
+            </table>
+            </div>
+        </div>
+        
+        
+        
+       <#include "footer.ftl.html">

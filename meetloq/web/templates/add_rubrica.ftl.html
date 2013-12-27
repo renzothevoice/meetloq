@@ -1,0 +1,49 @@
+<#include "header.ftl.html">
+
+        <#if (username?size>0)>
+        <#include "bloccologin.ftl.html">
+        </#if>
+
+<div id="thirdblock">
+    <div class="error">${error}</div>
+    <div class="mediumcontainerreg">
+        <h2>Aggiungi invitati alla Rubrica: </h2>
+        <form name="add_rubrica" action="ex_add_rubrica" method="post">
+            <table>
+                <tr>
+                    <td>* Nome:</td>
+                    <td><input class="inputtext" value="" type="text" name="nome"/></td>
+                    <td>* Cognome:</td>
+                    <td><input class="inputtext" value="" type="text" name="cognome"/></td>
+                    <td>* Email:</td>
+                    <td><input class="inputtext" value="" type="text" name="email"/></td>
+                </tr>
+                
+                    
+                
+                </table>
+            <p  style="margin-left:17px;"><i>* campi obbligatori</i></p>
+            <input type="submit" value="Aggiungi" class="button" style="margin-left:17px; width:18%; margin-bottom:10px;"/></form>
+            
+    </div>
+    <div class="mediumcontainerreg">
+        <h2>Rubrica: </h2>
+        <table>
+                    
+                    <tr>
+                        <td style="width:25%;" class="bold">NOME</td><td  style="width:25%;" class="bold">COGNOME</td><td style="width:25%;" class="bold">E-MAIL</td><td></td>
+                    </tr>
+                    <#list invitati as item>
+                        <tr>
+                            <td >${item.getNome()}</td><td>${item.getCognome()}</td><td>${item.getEmail()}</td><td><a href="ex_delete_rubrica?id=${item.getIdinvitato()}"><img style="width:12%;"src="templates/img/delete.png" title="cancella" alt="cancella"/></a></td>
+                        </tr>
+                    </#list>
+                    
+                </table>
+    </div>
+</div>
+
+
+
+
+<#include "footer.ftl.html">
